@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".authorization.login.LogInFragment">
+
+    <TextView
+        style="@style/TitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Sign In">
+    </TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/SignUpTextField"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Email"
+        android:theme="@style/TextInputLayoutAppearance">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:text="ahmed@gmail.com"
+            android:id="@+id/signInEmailET"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress"
+            android:padding="5dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/PasswordTextField"
+        style="@style/SignUpTextField"
+        app:endIconMode="password_toggle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Password"
+        android:theme="@style/TextInputLayoutAppearance">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:text="Ahmed@1234"
+            android:id="@+id/signInPasswordET"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:padding="5dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ProgressBar
+        android:id="@+id/signInProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:theme="@style/progressBar"
+        android:visibility="gone">
+
+    </ProgressBar>
+
+    <Button
+        android:id="@+id/signInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/black"
+        android:elevation="4dp"
+        android:text="Sign In"></Button>
+
+</LinearLayout>

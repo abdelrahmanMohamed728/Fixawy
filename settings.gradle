@@ -1,0 +1,3 @@
+include ':basemodule2'
+include ':app'
+rootProject.name = "Fixawy"
