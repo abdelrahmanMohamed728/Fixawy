@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="5dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginVertical="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fixer_test"></ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name_text_view"
+                style="@style/CardTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ahmed Mohamed"></TextView>
+
+            <TextView
+                android:id="@+id/job_text_view"
+                style="@style/CardSubTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Fixer"></TextView>
+
+            <TextView
+                android:id="@+id/price_text_view"
+                style="@style/CardSubTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="5$ / hour"></TextView>
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/stars_rating_bar"
+                style="@style/Widget.MaterialRatingBar.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:isIndicator="true"
+                android:minWidth="20dp"
+                android:minHeight="20dp"
+                android:numStars="5"
+                android:rating="2"></me.zhanghai.android.materialratingbar.MaterialRatingBar>
+
+            <Button
+                android:id="@+id/reserve_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/reserve"
+                android:textSize="10sp"></Button>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

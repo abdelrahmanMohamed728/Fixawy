@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_trendFragment2_to_searchFragment"
             app:destination="@id/requestsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_reserveFragment"
+            app:destination="@id/reserveFragment" />
     </fragment>
     <fragment
         android:id="@+id/requestsFragment"
@@ -22,10 +25,53 @@
         <action
             android:id="@+id/action_trendFragment2_to_searchFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_requestsFragment_to_requestDetailsFragment"
+            app:destination="@id/requestDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.fixawy.home.settings.SettingsFragment"
+        android:name="com.example.fixawy.home.past_requests.PastRequestsFragment"
         android:label="search_fragment"
-        tools:layout="@layout/settings_fragment" />
+        tools:layout="@layout/past_requests_fragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_requestDetailsFragment"
+            app:destination="@id/requestDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reserveFragment"
+        android:name="com.example.fixawy.home.reserve.ReserveFragment"
+        android:label="reserve_fragment"
+        tools:layout="@layout/reserve_fragment" />
+    <fragment
+        android:id="@+id/requestDetailsFragment"
+        android:name="com.example.fixawy.home.request_details.RequestDetailsFragment"
+        android:label="request_details_fragment"
+        tools:layout="@layout/request_details_fragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.fixawy.home.search.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_requestDetailsFragment"
+            app:destination="@id/requestDetailsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_reserveFragment2"
+            app:destination="@id/reserveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clientProfileFragment"
+        android:name="com.example.fixawy.home.client_profile.show_profile.ClientProfileFragment"
+        android:label="ClientProfileFragment" >
+        <action
+            android:id="@+id/action_clientProfileFragment_to_clientEditProfileFragment"
+            app:destination="@id/clientEditProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clientEditProfileFragment"
+        android:name="com.example.fixawy.home.client_profile.edit_profile.ClientEditProfileFragment"
+        android:label="client_edit_profile_fragment"
+        tools:layout="@layout/client_edit_profile_fragment" />
+
 </navigation>

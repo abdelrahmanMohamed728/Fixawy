@@ -13,6 +13,7 @@
         <item name="boxStrokeColor">@color/black</item>
         <item name="hintTextColor">@color/grey</item>
         <item name="android:layout_marginTop">20dp</item>
+        <item name="android:background">@color/white</item>
     </style>
 
     <style name="TitleTextView">
@@ -26,5 +27,74 @@
     <style name="progressBar" parent="@style/Theme.AppCompat">
         <item name="colorAccent">@color/black</item>
     </style>
+
+    <style name="CardTitleTextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="CardSubTitleTextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="MainTitle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/longline_quart</item>
+    </style>
+
+    <style name="StartButton">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/rounded_button</item>
+    </style>
+
+    <style name="ProfileTitle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">@font/cream</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="SubTitleProfile">
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">@font/cream</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="ProfileTitleEditText">
+        <item name="android:padding">10dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/cream</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@drawable/rounded_edit_text</item>
+    </style>
+
+    <style name="SubTitleProfileEditText">
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">@font/cream</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/rounded_edit_text</item>
+    </style>
+
+    <style name="SignUpSpinner">
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">@font/cream</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:background">@drawable/signup_rounded_edit_text</item>
+    </style>
+
 
 </resources>

@@ -1,16 +1,17 @@
 package com.example.fixawy.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.base.BaseActivity
 import com.example.fixawy.R
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        setContainerView(R.id.main_layout)
         initBottomNav()
     }
 
@@ -22,4 +23,5 @@ class HomeActivity : AppCompatActivity() {
                 navHostFragment!!.navController
         )
     }
+
 }

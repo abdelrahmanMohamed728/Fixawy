@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/start_background"
+    android:orientation="vertical"
+    tools:context=".home.fixer_profile.edit_profile.FixerEditProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#aaffffff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/fixer_test" />
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/fixer_edit_profile_pb"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+            </ProgressBar>
+
+            <EditText
+                android:id="@+id/fixer_name_show"
+                style="@style/SubTitleProfileEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/name_hint"
+                />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/JobSpinner"
+                style="@style/SubTitleProfileEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+            <EditText
+                android:id="@+id/fixer_phone_show"
+                android:hint="@string/hint_phone_number"
+                style="@style/SubTitleProfileEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/RegionSpinner"
+                style="@style/SubTitleProfileEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+            <EditText
+                android:gravity="right"
+                android:id="@+id/fixer_id_show"
+                style="@style/SubTitleProfileEditText"
+                android:layout_width="match_parent"
+                android:inputType="numberPassword|number"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_id" />
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/fixer_edit_save_pb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
+            </ProgressBar>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/save_edit_profile_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorAccent"
+                android:text="@string/save"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

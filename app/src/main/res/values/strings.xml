@@ -1,13 +1,33 @@
 <resources>
     <string name="app_name">Fix Station</string>
-    <string name="signUpSuccessful">"Your account has been created "</string>
-    <string name="signUpFailed">Sign up failed , Please try again</string>
     <string name="signInSuccessful">Log in successful</string>
-    <string name="signInFailed">Log in failed</string>
-    <string name="already_have_account">Already have an account ? Log in</string>
-    <string name="main">Home</string>
-    <string name="requests">My Requests</string>
-    <string name="search">Search</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="settings">Settings</string>
+    <string name="already_have_account">لديك حساب بالفعل</string>
+    <string name="main">الرئيسية</string>
+    <string name="requests">الطلبات</string>
+    <string name="past_requests">طلباتي السابقة</string>
+    <string name="search">البحث</string>
+    <string name="sign_up">مستخدم جديد</string>
+    <string name="reserve">طلب</string>
+    <string name="main_title">Top Rated Fixers</string>
+    <string name="accepted_status">مقبولة</string>
+    <string name="pending_status">معلق</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="edit_profile">تعديل</string>
+    <string name="save">حفظ</string>
+    <string name="profile">الصفحة الشخصية</string>
+    <string name="name_hint">ادخل الإسم</string>
+    <string name="hint_job">ادخل وظيفتك</string>
+    <string name="hint_phone_number">ادخل رقم الجوال مثال (055...)</string>
+    <string name="hint_id">ادخل رقم الهوية الوطنية أو الإقامة</string>
+    <string name="edit_successful">Your Profile is saved</string>
+    <string name="edit_failed">Please fill all your fields</string>
+    <string name="sign_up_error">Couldn\'t sign up properly please try again</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="client">مستخدم</string>
+    <string name="fixer">فني</string>
+    <string name="email_hint">البريد الإلكتروني</string>
+    <string name="password_hint">كلمه السر</string>
+
 </resources>

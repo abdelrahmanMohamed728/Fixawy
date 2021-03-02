@@ -10,6 +10,8 @@ import android.widget.TextView.BufferType
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.example.base.BaseActivity
 import com.example.base.BaseViewModel
 import com.example.base.InitFragment
@@ -18,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import java.lang.reflect.ParameterizedType
 import kotlin.reflect.KClass
+
 
 
 open class BaseFragment<T : BaseViewModel> : Fragment(), InitFragment {
@@ -39,6 +42,18 @@ open class BaseFragment<T : BaseViewModel> : Fragment(), InitFragment {
             ?.replace(getContainer(), fragment, tag)?.addToBackStack("")?.commit()
     }
 
+    fun addFragmentWithNavigation(route : Int){
+        view?.findNavController()?.navigate(route)
+    }
+
+    fun finishFragment(){
+        view?.findNavController()?.navigateUp()
+    }
+
+    fun addFragmentWithNavigationAndBundle(route : Int,bundle: Bundle){
+        view?.findNavController()?.navigate(route,bundle)
+    }
+
     fun addFragmentWithBundle(fragment: Fragment, bundle: Bundle) {
         fragment.arguments = bundle
         activity?.supportFragmentManager?.beginTransaction()
@@ -49,8 +64,16 @@ open class BaseFragment<T : BaseViewModel> : Fragment(), InitFragment {
         Snackbar.make(view, message, Snackbar.LENGTH_LONG).setBackgroundTint(getSnackBarColor()).show()
     }
 
+    fun showAcceptedSnackBar(view: View, message: String){
+        Snackbar.make(view, message, Snackbar.LENGTH_LONG).setBackgroundTint(getAcceptedColor()).show()
+    }
+
     private fun getSnackBarColor() : Int{
         return ContextCompat.getColor(context!!, R.color.violet)
+    }
+
+    private fun getAcceptedColor() : Int {
+        return ContextCompat.getColor(context!!, R.color.green)
     }
 
     private fun getBaseActivity(): BaseActivity {
@@ -72,6 +95,9 @@ open class BaseFragment<T : BaseViewModel> : Fragment(), InitFragment {
         initObservers()
         initRecycler()
         initListeners()
+        viewModel.errorsLiveData.observe(this , {
+            showSnackBar(requireView(), it.messageAr)
+        })
     }
 
     override fun initObservers() {

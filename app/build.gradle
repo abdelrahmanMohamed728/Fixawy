@@ -95,7 +95,14 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
+    //rating_bar
+    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
 
+    //circle_image_view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //chips_layout
+    implementation 'com.github.pchmn:MaterialChipsInput:1.0.8'
 
     implementation project(":basemodule2")
 }

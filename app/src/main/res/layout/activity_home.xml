@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:id="@+id/main_layout"
     tools:context=".home.HomeActivity">
 
     <fragment
@@ -20,7 +21,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_marginHorizontal="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="6dp"
         android:id="@+id/bottom_nav_bar"
         android:layout_height="0dp"
         app:menu="@menu/bottom_navigation_menu"

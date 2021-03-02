@@ -1,7 +1,7 @@
 package com.example.fixawy.home.requests
 
-import androidx.lifecycle.ViewModel
+import com.example.base.BaseViewModel
 
-class RequestsViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class RequestsViewModel : BaseViewModel() {
+
 }

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/start_background"
+    tools:context=".authorization.client_signup.SignUpFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#aaffffff"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:text="@string/sign_up">
+        </TextView>
+
+        <ProgressBar
+            android:id="@+id/fixer_sign_up_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
+        </ProgressBar>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/SignUpTextField"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/name_hint"
+            android:theme="@style/TextInputLayoutAppearance">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/FixerUsernameTextField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/SignUpTextField"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/email_hint"
+            android:theme="@style/TextInputLayoutAppearance">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/FixerEmailTextField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/FixerSignUpJobSpinner"
+            style="@style/SignUpSpinner"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+        </Spinner>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/MobileTextField"
+            style="@style/SignUpTextField"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/hint_phone_number"
+            android:theme="@style/TextInputLayoutAppearance">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/FixersignUpMobileET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone"
+                android:padding="5dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/FixerSignUpCitiesSpinner"
+            style="@style/SignUpSpinner"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+        </Spinner>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/PasswordTextField"
+            style="@style/SignUpTextField"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/password_hint"
+            android:theme="@style/TextInputLayoutAppearance"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/FixerSignUpPasswordET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:padding="5dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/already_have_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:text="@string/already_have_account"
+            android:textSize="15sp" />
+
+        <ProgressBar
+            android:id="@+id/signUpFixerProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:theme="@style/progressBar"
+            android:visibility="gone">
+        </ProgressBar>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signUpFixerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/black"
+            android:elevation="4dp"
+            android:text="@string/sign_up"
+            android:textColor="@color/white">
+        </androidx.appcompat.widget.AppCompatButton>
+    </LinearLayout>
+</ScrollView>

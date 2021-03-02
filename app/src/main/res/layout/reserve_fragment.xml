@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGrey"
+    tools:context=".home.reserve.ReserveFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fixer_rounded_background"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:src="@drawable/fixer_test">
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+            <TextView
+                android:id="@+id/fixer_name"
+                style="@style/CardTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Ahmed Mohamed"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold">
+            </TextView>
+
+            <TextView
+                android:id="@+id/fixer_job"
+                style="@style/CardSubTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Fixer"
+                android:textColor="@color/white">
+            </TextView>
+        </LinearLayout>
+
+        <com.pchmn.materialchips.ChipsInput
+            android:id="@+id/chips_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/white"
+            android:paddingHorizontal="10dp"
+            app:chip_hasAvatarIcon="false"
+            app:hint="اختر الخدمات">
+        </com.pchmn.materialchips.ChipsInput>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/SignUpTextField"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:theme="@style/TextInputLayoutAppearance">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
+                android:layout_height="match_parent"
+                android:text="لاثنين 15 اكتوبر 2021"
+                android:padding="5dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:textStyle="bold"
+            android:text="القيمة الإجمالية : ١٥ ريال "
+            style="@style/CardSubTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_gravity="center">
+        </TextView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/reserve">
+        </Button>
+    </LinearLayout>
+</ScrollView>

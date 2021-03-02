@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fixer_home_nav_graph"
+    app:startDestination="@id/fixerProfileFragment">
+
+    <fragment
+        android:id="@+id/requestsFragment2"
+        android:name="com.example.fixawy.home.requests.RequestsFragment"
+        android:label="requests_fragment"
+        tools:layout="@layout/requests_fragment" >
+        <action
+            android:id="@+id/action_requestsFragment2_to_pastRequestsFragment"
+            app:destination="@id/pastRequestsFragment" />
+        <action
+            android:id="@+id/action_requestsFragment2_to_requestDetailsFragment2"
+            app:destination="@id/requestDetailsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/pastRequestsFragment"
+        android:name="com.example.fixawy.home.past_requests.PastRequestsFragment"
+        android:label="past_requests_fragment"
+        tools:layout="@layout/past_requests_fragment" >
+        <action
+            android:id="@+id/action_pastRequestsFragment_to_requestDetailsFragment2"
+            app:destination="@id/requestDetailsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestDetailsFragment2"
+        android:name="com.example.fixawy.home.request_details.RequestDetailsFragment"
+        android:label="request_details_fragment"
+        tools:layout="@layout/request_details_fragment" />
+    <fragment
+        android:id="@+id/fixerProfileFragment"
+        android:name="com.example.fixawy.home.fixer_profile.show_profile.FixerProfileFragment"
+        android:label="fixer_profile_fragment"
+        tools:layout="@layout/fixer_profile_fragment" >
+        <action
+            android:id="@+id/action_fixerProfileFragment_to_fixerEditProfileFragment"
+            app:destination="@id/fixerEditProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fixerEditProfileFragment"
+        android:name="com.example.fixawy.home.fixer_profile.edit_profile.FixerEditProfileFragment"
+        android:label="fixer_edit_profile_fragment"
+        tools:layout="@layout/fixer_edit_profile_fragment" />
+</navigation>

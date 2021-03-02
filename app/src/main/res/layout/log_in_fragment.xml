@@ -1,74 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/start_background"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".authorization.login.LogInFragment">
 
-    <TextView
-        style="@style/TitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Sign In">
-    </TextView>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/SignUpTextField"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Email"
-        android:theme="@style/TextInputLayoutAppearance">
+        android:layout_height="match_parent"
+        android:background="#aaffffff"
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:text="ahmed@gmail.com"
-            android:id="@+id/signInEmailET"
+        <TextView
+            style="@style/TitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="@string/login">
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/SignUpTextField"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textEmailAddress"
-            android:padding="5dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="50dp"
+            android:hint="البريد الإلكتروني"
+            android:theme="@style/TextInputLayoutAppearance">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/PasswordTextField"
-        style="@style/SignUpTextField"
-        app:endIconMode="password_toggle"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Password"
-        android:theme="@style/TextInputLayoutAppearance">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signInEmailET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:padding="5dp"
+                android:text="kholoud@gmail.com" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:text="Ahmed@1234"
-            android:id="@+id/signInPasswordET"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/PasswordTextField"
+            style="@style/SignUpTextField"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textPassword"
-            android:padding="5dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="50dp"
+            android:hint="كلمة السر"
+            android:theme="@style/TextInputLayoutAppearance"
+            app:endIconMode="password_toggle">
 
-    <ProgressBar
-        android:id="@+id/signInProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:theme="@style/progressBar"
-        android:visibility="gone">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signInPasswordET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:text="Ahmed@1234" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    </ProgressBar>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/login_progress_bar"
+            android:layout_gravity="center">
+        </ProgressBar>
 
-    <Button
-        android:id="@+id/signInButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@color/black"
-        android:elevation="4dp"
-        android:text="Sign In"></Button>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fixer">
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/client_radio_btn"
+                android:layout_width="wrap_content"
+                android:checked="true"
+                android:layout_height="wrap_content"
+                android:text="@string/client">
+            </RadioButton>
+        </RadioGroup>
 
+        <ProgressBar
+            android:id="@+id/signInProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:theme="@style/progressBar"
+            android:visibility="gone">
+
+        </ProgressBar>
+
+        <Button
+            android:id="@+id/signInButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/black"
+            android:elevation="4dp"
+            android:textColor="@color/white"
+            android:text="@string/login"></Button>
+
+    </LinearLayout>
 </LinearLayout>

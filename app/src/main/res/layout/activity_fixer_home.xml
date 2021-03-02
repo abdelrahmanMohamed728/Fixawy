@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/fixer_home_layout"
+    tools:context=".home.FixerHomeActivity">
+    <fragment
+        android:id="@+id/fixer_home_frag_host"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/fixer_home_nav_graph"
+        android:layout_weight="10">
+    </fragment>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginBottom="6dp"
+        android:id="@+id/fixer_bottom_nav_bar"
+        android:layout_height="0dp"
+        app:menu="@menu/fixer_bottom_nav_bar_menu"
+        android:background="@drawable/bottom_nav_bar_background"
+        app:itemIconTint="@drawable/tab_color"
+        app:itemTextColor="@drawable/tab_color"
+        android:layout_weight="1">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</LinearLayout>
