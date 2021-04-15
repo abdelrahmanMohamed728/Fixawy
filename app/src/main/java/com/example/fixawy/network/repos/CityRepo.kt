@@ -15,4 +15,9 @@ class CityRepo : BaseRepo() {
     fun getJobs() : Observable<List<JobDTO>>{
         return apiManager.getJobs()
     }
+
+    fun getSubJobs(id : Int) : Observable<List<JobDTO>> {
+        return apiManager.getSubJobs(id)
+    }
+
 }

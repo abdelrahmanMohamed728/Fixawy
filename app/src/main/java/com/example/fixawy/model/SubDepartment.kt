@@ -1,6 +1,8 @@
 package com.example.fixawy.model
 
-class SubDepartment  {
-    var id : String? = null
+import java.io.Serializable
+
+class SubDepartment : Serializable {
+    var id : Int? = null
     var name : String? = null
 }

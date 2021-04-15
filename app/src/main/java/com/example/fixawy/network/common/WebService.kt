@@ -1,5 +1,6 @@
 package com.example.fixawy.network.common
 
+import com.example.fixawy.model.UpdatePriceDTO
 import com.example.fixawy.network.model.*
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -22,6 +23,9 @@ interface WebService {
     @GET("/api/SubDepartment/GetSubDepartments")
     fun getSubDepartments(): Observable<List<SubDepartmentDTO>>
 
+    @GET("/api/Department/GetDepartments")
+    fun getDepartments(): Observable<List<SubDepartmentDTO>>
+
     @POST("/api/Customer/Login")
     fun clientLogIn(
         @Query("Email") email: String,
@@ -35,12 +39,48 @@ interface WebService {
     ): Observable<FixerLogInResponse>
 
     @GET("/api/Department/GetDepartments")
-    fun getJobs() : Observable<List<JobDTO>>
+    fun getJobs(): Observable<List<JobDTO>>
+
+    @GET("/api/SubDepartment/GetSubDepartmentsByDepartmentID")
+    fun getSubJobs(@Query("DepartmentID") departmentId : Int) : Observable<List<JobDTO>>
 
     @POST("/api/Fixer/UpdateFixer")
-    fun updateFixer(@Body fixerDTO: FixerDTO) : Completable
+    fun updateFixer(@Body fixerDTO: FixerDTO): Completable
 
     @POST("/api/Customer/UpdateCustomer")
-    fun updateClient(@Body clientAuthDTO: ClientAuthDTO) : Completable
+    fun updateClient(@Body clientAuthDTO: ClientAuthDTO): Completable
+
+    @POST("api/Common/DynamicQuery")
+    fun dynamicQuery(@Query("Query") query: String): Observable<AllFixersResponse>
+
+    @GET("/api/Order/GetOrdersByFixerId")
+    fun getFixerRequests(
+        @Query("FixerId") fixerId: Int,
+        @Query("Status") status: Int
+    ): Observable<List<RequestDTO>>
+
+    @GET("/api/Order/GetOrdersByCustomerId")
+    fun getCustomerRequests(
+        @Query("CustomerId") fixerId: Int,
+        @Query("Status") status: Int
+    ) : Observable<List<RequestDTO>>
+
+    @POST("/api/Order/UpdateOrderStatus")
+    fun updateOrderStatus(
+        @Query("OrderId") orderId: Int,
+        @Query("Status") status: Int
+    ):Completable
+
+    @POST("/api/Order/AddOrder")
+    fun addOrder(@Body addRequestDTO : AddRequestDTO) : Completable
+
+    @POST("/api/Fixer/UpdateRateByFixerId")
+    fun rateFixer(
+        @Query("FixerId") fixerId : Int ,
+        @Query("Rate") rate : Float
+    ) : Completable
+
+    @POST("/api/Fixer/UpdateFixerMinPrice")
+    fun updatePrice(@Body updatePriceDTO: UpdatePriceDTO) : Completable
 
 }

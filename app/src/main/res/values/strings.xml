@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Fix Station</string>
-    <string name="signInSuccessful">Log in successful</string>
+    <string name="signInSuccessful">تم تسجيل الدخول بنجاح</string>
     <string name="already_have_account">لديك حساب بالفعل</string>
     <string name="main">الرئيسية</string>
     <string name="requests">الطلبات</string>
@@ -11,23 +11,27 @@
     <string name="main_title">Top Rated Fixers</string>
     <string name="accepted_status">مقبولة</string>
     <string name="pending_status">معلق</string>
-    <string name="confirm">Confirm</string>
-    <string name="cancel">Cancel</string>
+    <string name="confirm">تأكيد</string>
+    <string name="cancel">إلغاء</string>
     <string name="login">تسجيل الدخول</string>
     <string name="edit_profile">تعديل</string>
     <string name="save">حفظ</string>
+    <string name="logout">تسجيل خروج</string>
     <string name="profile">الصفحة الشخصية</string>
     <string name="name_hint">ادخل الإسم</string>
     <string name="hint_job">ادخل وظيفتك</string>
     <string name="hint_phone_number">ادخل رقم الجوال مثال (055...)</string>
     <string name="hint_id">ادخل رقم الهوية الوطنية أو الإقامة</string>
-    <string name="edit_successful">Your Profile is saved</string>
-    <string name="edit_failed">Please fill all your fields</string>
-    <string name="sign_up_error">Couldn\'t sign up properly please try again</string>
+    <string name="edit_successful">تم حفظ التغييرات الخاصة بك</string>
+    <string name="edit_failed">يرجى ملء جميع البيانات الخاصة بك</string>
+    <string name="sign_up_error">تعذر التسجيل بشكل صحيح ، يرجى المحاولة مرة أخرى</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="client">مستخدم</string>
     <string name="fixer">فني</string>
     <string name="email_hint">البريد الإلكتروني</string>
     <string name="password_hint">كلمه السر</string>
+    <string name="finish">إنهاء</string>
+    <string name="rate">قيم</string>
+    <string name="change_prices">تغيير الأسعار</string>
 
 </resources>

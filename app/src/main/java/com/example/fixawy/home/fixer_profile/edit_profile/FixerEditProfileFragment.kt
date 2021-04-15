@@ -57,6 +57,8 @@ class FixerEditProfileFragment : BaseFragment<FixerEditProfileViewModel>() {
         viewModel.fixerLiveData.value = fixer
         fixer_name_show.setText(fixer?.name)
         fixer_phone_show.setText(fixer?.mobile)
+        fixer_id_show.setText(fixer?.identityNo)
+        fixer_password_show.setText(fixer?.password)
     }
 
     private fun updateJobSpinner(jobs: List<Job>) {
@@ -136,7 +138,8 @@ class FixerEditProfileFragment : BaseFragment<FixerEditProfileViewModel>() {
             viewModel.citiesLiveData.value?.find { city -> city.name == RegionSpinner.selectedItem.toString() }
         fixer?.job =
             viewModel.jobsLiveData.value?.find { job -> job.name == JobSpinner.selectedItem.toString() }
-
+        fixer?.identityNo = fixer_id_show.text.toString()
+        fixer?.password = fixer_password_show.text.toString()
         return fixer!!
     }
 

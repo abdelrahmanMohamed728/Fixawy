@@ -25,7 +25,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/user_test" />
+                android:src="@drawable/user_image" />
 
             <ProgressBar
                 android:id="@+id/client_profile_progress_bar"
@@ -61,13 +61,13 @@
                 android:layout_height="40dp"/>
 
             <EditText
-                android:id="@+id/client_id_show"
+                android:id="@+id/client_password_show"
+                android:hint="@string/password_hint"
                 style="@style/SubTitleProfileEditText"
                 android:layout_width="match_parent"
-                android:gravity="right"
-                android:inputType="numberPassword|number"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_id" />
+                android:inputType="textPassword"
+                android:text="" />
 
             <ProgressBar
                 android:id="@+id/client_profile_save_progress_bar"

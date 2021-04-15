@@ -29,8 +29,8 @@ class MainAdapter(var context: Context, var fixers: List<Fixer>, var onClickItem
         var fixer = fixers[position]
         holder.nameTextView.text = fixer.name
         holder.job_text_view.text = fixer.job?.name
-        holder.price_text_view.text = "9"
-        holder.rating_bar.rating = fixer.rating!!.toFloat()
+        holder.mobile_text_view.text = fixer.mobile
+        holder.rating_bar.rating = fixer.rating!!
         holder.reserve_button.setOnClickListener {
             onClickItem.onItemClicked(position)
         }
@@ -40,7 +40,7 @@ class MainAdapter(var context: Context, var fixers: List<Fixer>, var onClickItem
     class MainViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var nameTextView: TextView = view.name_text_view
         var job_text_view: TextView = view.job_text_view
-        var price_text_view: TextView = view.price_text_view
+        var mobile_text_view: TextView = view.phone_text_view
         var rating_bar: RatingBar = view.stars_rating_bar
         var reserve_button : Button = view.reserve_button
     }

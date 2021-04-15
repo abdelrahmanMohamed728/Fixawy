@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/start_background"
-    android:orientation="vertical"
+    android:layout_weight="1"
     tools:context=".home.fixer_profile.edit_profile.FixerEditProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/start_background"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="#aaffffff"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_marginHorizontal="10dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -66,13 +69,22 @@
                 android:layout_height="40dp"/>
 
             <EditText
-                android:gravity="right"
                 android:id="@+id/fixer_id_show"
                 style="@style/SubTitleProfileEditText"
                 android:layout_width="match_parent"
-                android:inputType="numberPassword|number"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_id" />
+                android:gravity="right"
+                android:hint="@string/hint_id"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/fixer_password_show"
+                style="@style/SubTitleProfileEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword" />
 
             <ProgressBar
                 android:visibility="gone"
@@ -94,7 +106,7 @@
                 android:background="@color/colorAccent"
                 android:text="@string/save"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

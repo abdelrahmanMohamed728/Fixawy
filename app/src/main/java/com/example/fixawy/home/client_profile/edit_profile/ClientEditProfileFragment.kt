@@ -36,7 +36,7 @@ class ClientEditProfileFragment : BaseFragment<ClientEditProfileViewModel>() {
         viewModel.clientUpdatedLiveData.observe(this , {
             client_profile_save_progress_bar.visibility = View.GONE
             UserRepo.getInstance().clientLiveData.value = viewModel.clientLiveData.value
-            showSnackBar(requireView(), getString(R.string.edit_successful))
+            showAcceptedSnackBar(requireView(), getString(R.string.edit_successful))
             finishFragment()
         })
         viewModel.citiesLiveData.observe(this, {
@@ -62,6 +62,7 @@ class ClientEditProfileFragment : BaseFragment<ClientEditProfileViewModel>() {
         viewModel.clientLiveData.value = client
         client_name_show.setText(client?.name)
         client_phone_show.setText(client?.mobile)
+        client_password_show.setText(client?.password)
     }
 
     private fun updateSpinner(cities: List<City>) {
@@ -98,13 +99,14 @@ class ClientEditProfileFragment : BaseFragment<ClientEditProfileViewModel>() {
     }
 
     private fun fieldsAreNotEmpty(): Boolean {
-        return (client_id_show.text.isNotEmpty() && client_name_show.text.isNotEmpty())
+        return (client_name_show.text.isNotEmpty())
     }
 
     private fun createClient(): Client {
         var client = viewModel.clientLiveData.value
         client?.name = client_name_show.text.toString()
         client?.city = viewModel.citiesLiveData.value?.find { city -> city.name == ClientRegionSpinner.selectedItem.toString() }
+        client?.password = client_password_show.text.toString()
         return client!!
     }
 

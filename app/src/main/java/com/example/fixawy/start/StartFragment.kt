@@ -1,6 +1,8 @@
 package com.example.fixawy.start
 
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,14 @@ class StartFragment : BaseFragment<StartViewModel>() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.start_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val pref: SharedPreferences = context?.getSharedPreferences("Auth", Context.MODE_PRIVATE)!!
+        if (pref.contains("username")){
+            addFragmentWithNavigation(R.id.action_startFragment_to_logInFragment)
+        }
     }
 
     override fun initListeners() {

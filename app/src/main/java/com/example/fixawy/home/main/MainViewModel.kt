@@ -16,7 +16,7 @@ class MainViewModel(var repo: HomeRepo, var subDepartmentMapper: SubDepartmentMa
     var subDepartmentsLiveData = MutableLiveData<List<SubDepartment>>()
 
     fun getAllSubDepartments() {
-        var observable = repo.getAllSubDepartments()
+        var observable = repo.getAllDepartments()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext { subDepartmentsLiveData.postValue(mapSubDepartments(it)) }

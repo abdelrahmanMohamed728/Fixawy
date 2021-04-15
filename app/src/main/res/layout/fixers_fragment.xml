@@ -4,20 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".home.past_requests.PastRequestsFragment">
+    tools:context=".home.fixers.FixersFragment">
 
     <ProgressBar
-        android:visibility="gone"
-        android:id="@+id/pastProgressBar"
-        android:layout_marginVertical="20dp"
+        android:id="@+id/fixerProgressBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:visibility="gone"
         android:layout_gravity="center"
-        ></ProgressBar>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/past_requests_RV"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content">
+    </ProgressBar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fixerRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

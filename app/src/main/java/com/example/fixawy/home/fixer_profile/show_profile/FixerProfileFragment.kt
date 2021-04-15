@@ -1,5 +1,7 @@
 package com.example.fixawy.home.fixer_profile.show_profile
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import org.koin.android.ext.android.get
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.basemodule2.base.BaseFragment
+import com.example.fixawy.MainActivity
 import com.example.fixawy.R
 import com.example.fixawy.model.Fixer
 import com.example.fixawy.network.repos.UserRepo
@@ -35,6 +38,16 @@ class FixerProfileFragment : BaseFragment<FixerProfileViewModel>(){
         edit_profile_btn.setOnClickListener {
             addFragmentWithNavigation(R.id.action_fixerProfileFragment_to_fixerEditProfileFragment)
         }
+        fixer_log_out.setOnClickListener {
+            val pref: SharedPreferences = context?.getSharedPreferences("Auth",
+                Context.MODE_PRIVATE
+            )!!
+            val editor: SharedPreferences.Editor = pref.edit()
+            editor.clear()
+            editor.apply()
+            addActivity(MainActivity())
+            activity?.finishAffinity()
+        }
     }
 
     override fun initObservers() {
@@ -51,6 +64,9 @@ class FixerProfileFragment : BaseFragment<FixerProfileViewModel>(){
         fixer_id_edit.text = ""
         fixer_job_edit.text = fixer.job?.name
         fixer_region_edit.text = fixer.city?.name
+        if (fixer.rating!=null)
+        fixerRating.rating = fixer.rating!!
+        fixer_id_edit.text = fixer.identityNo
     }
 
 

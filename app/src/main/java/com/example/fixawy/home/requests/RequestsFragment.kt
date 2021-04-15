@@ -18,9 +18,9 @@ import com.example.fixawy.network.repos.UserRepo
 import kotlinx.android.synthetic.main.requests_fragment.*
 import org.koin.android.ext.android.get
 
-class RequestsFragment : BaseFragment<RequestsViewModel>() , OnClickItem{
+class RequestsFragment : BaseFragment<RequestsViewModel>(), OnClickItem {
 
-    lateinit var requestsAdapter : RequestsAdapter
+    lateinit var requestsAdapter: RequestsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,41 +29,88 @@ class RequestsFragment : BaseFragment<RequestsViewModel>() , OnClickItem{
         return inflater.inflate(R.layout.requests_fragment, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requests_RV.visibility = View.VISIBLE
+
+        var repo: UserRepo = get()
+        var type = repo.type
+        if (type == User.FIXER_TYPE) {
+            var id = repo.fixerLiveData.value?.id
+            if (id != null) {
+                viewModel.getFixerPendingRequests(id)
+                viewModel.getFixerAccpetedRequests(id)
+            }
+        } else {
+            var id = repo.clientLiveData.value?.id
+            if (id != null) {
+                viewModel.getClientPendingRequests(id)
+                viewModel.getClientAcceptedRequests(id)
+            }
+        }
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+        viewModel.pendingFixerRequestsLiveData.observe(this, {
+            requestsAdapter.requests.addAll(it)
+            requestsAdapter.requests =
+                requestsAdapter.requests.distinctBy { item -> item.id }.toMutableList()
+            requestsAdapter.notifyDataSetChanged()
+        })
+        viewModel.pendingClientRequestsLiveData.observe(this, {
+            requestsAdapter.requests.addAll(it)
+            requestsAdapter.requests =
+                requestsAdapter.requests.distinctBy { item -> item.id }.toMutableList()
+            requestsAdapter.notifyDataSetChanged()
+        })
+        viewModel.acceptedFixerRequestsLiveData.observe(this, {
+            requests_RV.visibility = View.GONE
+            requestsAdapter.requests.addAll(it)
+            requestsAdapter.requests =
+                requestsAdapter.requests.distinctBy { item -> item.id }.toMutableList()
+            requestsAdapter.notifyDataSetChanged()
+        })
+        viewModel.acceptedClientRequestsLiveData.observe(this, {
+            requests_RV.visibility = View.GONE
+            requestsAdapter.requests.addAll(it)
+            requestsAdapter.requests =
+                requestsAdapter.requests.distinctBy { item -> item.id }.toMutableList()
+            requestsAdapter.notifyDataSetChanged()
+        })
+    }
 
     override fun initRecycler() {
         super.initRecycler()
-        initDummyData()
+        var repo: UserRepo = get()
+        var type = repo.type
         requestsAdapter =
             RequestsAdapter(
                 requireContext(),
-                initDummyData(),
+                mutableListOf(),
                 this,
-                RequestsAdapter.ACTIVE_REQUESTS_MODE
+                RequestsAdapter.ACTIVE_REQUESTS_MODE,
+                type
             )
         active_requests_RV.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         active_requests_RV.adapter = requestsAdapter
     }
 
-    private fun initDummyData(): List<Request> {
-        var list = mutableListOf<Request>()
-        return list
-    }
 
     override fun onItemClicked(position: Int) {
-        var repo : UserRepo = get()
+        var repo: UserRepo = get()
         var type = repo.type
         val bundle = bundleOf("request" to requestsAdapter.requests[position])
         if (type == User.CLIENT_TYPE) {
-            openClientActiveRequests(position,bundle)
-        }
-        else{
-            openFixerActiveRequests(position,bundle)
+            openClientActiveRequests(position, bundle)
+        } else {
+            openFixerActiveRequests(position, bundle)
         }
     }
 
     private fun openFixerActiveRequests(position: Int, bundle: Bundle?) {
-        val mode = requestsAdapter.requests[position].status!! + 2
+        val mode = requestsAdapter.requests[position].status!!
         val bundle3 = bundleOf("mode" to mode)
         bundle?.putAll(bundle3)
         addFragmentWithNavigationAndBundle(
@@ -72,7 +119,7 @@ class RequestsFragment : BaseFragment<RequestsViewModel>() , OnClickItem{
         )
     }
 
-    private fun openClientActiveRequests(position: Int,bundle: Bundle?){
+    private fun openClientActiveRequests(position: Int, bundle: Bundle?) {
         val bundle3 = bundleOf("mode" to Request.ACTIVE_MODE)
         bundle?.putAll(bundle3)
         addFragmentWithNavigationAndBundle(

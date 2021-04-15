@@ -18,7 +18,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:src="@drawable/user_test" />
+            android:src="@drawable/user_image" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/client_edit_profile_btn"
@@ -29,13 +29,12 @@
             android:text="@string/edit_profile" />
 
         <TextView
-            style="@style/ProfileTitle"
             android:id="@+id/client_name_edit"
+            style="@style/ProfileTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="محمد ادريس" />
-
 
 
         <TextView
@@ -47,20 +46,41 @@
 
         <TextView
             android:id="@+id/client_region_edit"
-            android:layout_width="wrap_content"
             style="@style/SubTitleProfile"
-            android:text="المدينة : حفرالباطن"
-            android:layout_height="wrap_content">
-        </TextView>
-
-        <TextView
-            android:id="@+id/client_id_edit"
             android:layout_width="wrap_content"
-            style="@style/SubTitleProfile"
-            android:inputType="numberPassword"
-            android:text="11111111"
-            android:layout_height="wrap_content">
-        </TextView>
+            android:layout_height="wrap_content"
+            android:text="المدينة : حفرالباطن"></TextView>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/client_log_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/SubTitleProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:textStyle="bold"
+                android:textColor="@color/violet"
+                android:textSize="12sp"
+                android:layout_marginRight="10dp"
+                android:text="@string/logout">
+            </TextView>
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_logout">
+            </ImageView>
+
+        </LinearLayout>
+
+</LinearLayout>
 </LinearLayout>

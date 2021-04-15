@@ -11,10 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.base.OnClickItem
 import com.example.fixawy.R
 import com.example.fixawy.model.Request
+import com.example.fixawy.model.User
 import kotlinx.android.synthetic.main.reservation_layout.view.*
 
-class RequestsAdapter (var context: Context, var requests: List<Request>, var onClickItem: OnClickItem ,
-                       var mode : Int) :
+class RequestsAdapter (var context: Context, var requests: MutableList<Request>, var onClickItem: OnClickItem ,
+                       var mode : Int,var type : Int) :
     RecyclerView.Adapter<RequestsAdapter.RequestsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RequestsViewHolder {
         return RequestsViewHolder(
@@ -28,7 +29,14 @@ class RequestsAdapter (var context: Context, var requests: List<Request>, var on
 
     override fun onBindViewHolder(holder: RequestsViewHolder, position: Int) {
         var request = requests[position]
-        holder.personName.text = request.fixer?.name
+        if (type == User.CLIENT_TYPE) {
+            holder.personName.text = request.fixer?.name
+            holder.phone.text = request.fixer?.mobile
+        }
+        else {
+            holder.personName.text = request.client?.name
+            holder.phone.text = request.client?.mobile
+        }
         holder.date.text = request.date
         if (mode == ACTIVE_REQUESTS_MODE) {
             if (request.status == Request.ACCEPTED_STATUS) {
@@ -55,6 +63,7 @@ class RequestsAdapter (var context: Context, var requests: List<Request>, var on
         var date: TextView = view.date_text_view
         var status: TextView = view.status_text_view
         var layout: LinearLayout = view.request_linear_layout
+        var phone : TextView = view.person_number_text_view
     }
 
     companion object{

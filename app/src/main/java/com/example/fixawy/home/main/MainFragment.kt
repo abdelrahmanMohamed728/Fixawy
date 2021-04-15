@@ -20,7 +20,7 @@ import com.example.fixawy.model.SubDepartment
 import kotlinx.android.synthetic.main.main_fragment.*
 import kotlinx.android.synthetic.main.past_requests_fragment.*
 
-class MainFragment : BaseFragment<MainViewModel>() , OnClickItem{
+class MainFragment : BaseFragment<MainViewModel>() , OnClickItem {
 
     lateinit var subDepartmentAdapter: SubDepartmentAdapter
 
@@ -57,9 +57,9 @@ class MainFragment : BaseFragment<MainViewModel>() , OnClickItem{
         home_recyclerview.adapter = subDepartmentAdapter
     }
 
-
     override fun onItemClicked(position: Int) {
-
+        val bundle = bundleOf("department" to subDepartmentAdapter.subDepartments[position])
+        addFragmentWithNavigationAndBundle(R.id.action_mainFragment_to_fixersFragment,bundle)
     }
 
 }

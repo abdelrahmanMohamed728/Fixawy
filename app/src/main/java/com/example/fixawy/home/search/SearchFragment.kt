@@ -1,6 +1,7 @@
 package com.example.fixawy.home.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,9 @@ import com.example.basemodule2.base.BaseFragment
 import com.example.fixawy.R
 import com.example.fixawy.home.main.adapter.MainAdapter
 import com.example.fixawy.model.Fixer
+import com.example.fixawy.network.repos.UserRepo
 import kotlinx.android.synthetic.main.search_fragment.*
+import org.koin.android.ext.android.get
 
 class SearchFragment : BaseFragment<SearchViewModel>(), OnClickItem {
 
@@ -27,7 +30,17 @@ class SearchFragment : BaseFragment<SearchViewModel>(), OnClickItem {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initDummyData()
+        viewModel.getAllFixers()
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+        viewModel.fixersLiveData.observe(this , {
+            var repo : UserRepo = get()
+            var cityId = repo.clientLiveData.value?.city?.id
+            mainAdapter.fixers = it.filter { fixer -> fixer.city?.id == cityId}
+            mainAdapter.notifyDataSetChanged()
+        })
     }
 
     override fun initListeners() {
@@ -38,14 +51,19 @@ class SearchFragment : BaseFragment<SearchViewModel>(), OnClickItem {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                var repo : UserRepo = get()
+                var cityId = repo.clientLiveData.value?.city?.id
                 return if (!newText.isNullOrEmpty()) {
-                    mainAdapter.fixers = fixers.filter {fixer ->
-                        fixer.name?.toLowerCase()?.contains(newText.toLowerCase())!!
+                    mainAdapter.fixers = viewModel.fixersLiveData.value!!.filter {fixer -> (
+                        fixer.name.toLowerCase().contains(newText.toLowerCase())&&fixer.city?.id == cityId)
                     }
                     mainAdapter.notifyDataSetChanged()
                     true
-                } else
-                    false
+                } else {
+                    mainAdapter.fixers = viewModel.fixersLiveData.value!!.filter { fixer -> fixer.city?.id == cityId}
+                    mainAdapter.notifyDataSetChanged()
+                 true
+                }
             }
 
         })
@@ -57,7 +75,7 @@ class SearchFragment : BaseFragment<SearchViewModel>(), OnClickItem {
         mainAdapter =
             MainAdapter(
                 requireContext(),
-                initDummyData().filter { it.name.contains(searchview.query) },
+                mutableListOf(),
                 this
             )
         search_rv.layoutManager =

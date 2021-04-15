@@ -18,12 +18,15 @@ class FixerLogInMapper : EntityMapper<Fixer,FixerLogInDTO> {
         fixerLogInDTO.mobile = entity.mobile
         fixerLogInDTO.password = entity.password
         fixerLogInDTO.email = entity.email
+        fixerLogInDTO.identityNo = entity.identityNo
+        fixerLogInDTO.rate = entity.rating
         return fixerLogInDTO
     }
 
     override fun fromDomainModelToEntity(model: FixerLogInDTO): Fixer {
         var fixer = Fixer(model.id,model.name)
         fixer.mobile = model.mobile
+        fixer.rating = model.rate
         fixer.city = City()
         fixer.city?.id = model.city?.id
         fixer.city?.name = model.city?.nameAr
@@ -32,6 +35,7 @@ class FixerLogInMapper : EntityMapper<Fixer,FixerLogInDTO> {
         fixer.job?.name = model.department?.nameAr
         fixer.password = model.password
         fixer.email = model.email
+        fixer.identityNo = model.identityNo
         return fixer
     }
 }

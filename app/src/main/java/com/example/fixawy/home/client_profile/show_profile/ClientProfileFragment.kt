@@ -1,10 +1,13 @@
 package com.example.fixawy.home.client_profile.show_profile
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.basemodule2.base.BaseFragment
+import com.example.fixawy.MainActivity
 import com.example.fixawy.R
 import com.example.fixawy.model.Client
 import org.koin.android.ext.android.get
@@ -40,6 +43,16 @@ class ClientProfileFragment : BaseFragment<ClientProfileViewModel>() {
         client_edit_profile_btn.setOnClickListener {
             addFragmentWithNavigation(R.id.action_clientProfileFragment_to_clientEditProfileFragment)
         }
+        client_log_out.setOnClickListener {
+            val pref: SharedPreferences = context?.getSharedPreferences("Auth",
+                Context.MODE_PRIVATE
+            )!!
+            val editor: SharedPreferences.Editor = pref.edit()
+            editor.clear()
+            editor.apply()
+            addActivity(MainActivity())
+            activity?.finishAffinity()
+        }
     }
 
     override fun initObservers() {
@@ -53,7 +66,6 @@ class ClientProfileFragment : BaseFragment<ClientProfileViewModel>() {
 
     private fun updateClient(client: Client) {
         client_name_edit.text = client.name
-        client_id_edit.text = ""
         client_region_edit.text = client.city?.name
         client_phone_edit.text = client.mobile
     }

@@ -33,8 +33,7 @@
                 android:layout_gravity="center"
                 android:text="Ahmed Mohamed"
                 android:textColor="@color/colorAccent"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/fixer_job_text_view"
@@ -44,26 +43,32 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Fixer"
-                android:textColor="@color/white">
-            </TextView>
+                android:textColor="@color/white" />
         </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextView
+            android:gravity="center"
+            android:id="@+id/dateTextView"
             style="@style/SignUpTextField"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:theme="@style/TextInputLayoutAppearance">
+            android:clickable="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:padding="5dp"
+            android:text=""
+            android:textColor="@color/black" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clickable="false"
-                android:focusable="false"
-                android:inputType="none"
-                android:padding="5dp"
-                android:text="On Monday 15th October 2021"
-                android:textColor="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:id="@+id/subdepartment_details_text_view"
+            style="@style/CardSubTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp">
+        </TextView>
 
         <TextView
             android:id="@+id/details_price_text_view"
@@ -72,9 +77,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginVertical="10dp"
-            android:text="Total Cost : 12$"
-            android:textStyle="bold">
-        </TextView>
+            android:textStyle="bold"></TextView>
+
+        <ProgressBar
+            android:id="@+id/requestDetailsProgressbar"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+        </ProgressBar>
 
         <LinearLayout
             android:id="@+id/cancel_layout"
@@ -91,8 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/violet"
-                android:text="@string/cancel">
-            </Button>
+                android:text="@string/cancel" />
         </LinearLayout>
 
         <LinearLayout
@@ -101,35 +111,85 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:visibility="gone"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/pending_accept_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="@color/teal_200"
                 android:text="@string/confirm"
-                android:textColor="@color/black"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp">
-            </androidx.appcompat.widget.AppCompatButton>
+                android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/pending_cancel_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:backgroundTint="@color/violet"
                 android:background="@drawable/rounded_button"
+                android:backgroundTint="@color/violet"
                 android:text="@string/cancel"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp">
-            </androidx.appcompat.widget.AppCompatButton>
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/finish__layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/finish_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@color/teal_200"
+                android:text="@string/finish"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/rateLayout"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp">
+            </me.zhanghai.android.materialratingbar.MaterialRatingBar>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+            </View>
+            <Button
+                android:id="@+id/rate_fixer"
+                android:layout_marginRight="10dp"
+                android:text="@string/rate"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </Button>
         </LinearLayout>
 
     </LinearLayout>

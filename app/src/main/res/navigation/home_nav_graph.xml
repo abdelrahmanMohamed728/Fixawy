@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_reserveFragment"
             app:destination="@id/reserveFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_fixersFragment"
+            app:destination="@id/fixersFragment" />
     </fragment>
     <fragment
         android:id="@+id/requestsFragment"
@@ -73,5 +76,19 @@
         android:name="com.example.fixawy.home.client_profile.edit_profile.ClientEditProfileFragment"
         android:label="client_edit_profile_fragment"
         tools:layout="@layout/client_edit_profile_fragment" />
+    <fragment
+        android:id="@+id/fixersFragment"
+        android:name="com.example.fixawy.home.fixers.FixersFragment"
+        android:label="fixers_fragment"
+        tools:layout="@layout/fixers_fragment" >
+        <action
+            android:id="@+id/action_fixersFragment_to_reserveFragment"
+            app:destination="@id/reserveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logoutFragment"
+        android:name="com.example.fixawy.authorization.logout.LogoutFragment"
+        android:label="fragment_logout"
+        tools:layout="@layout/fragment_logout" />
 
 </navigation>

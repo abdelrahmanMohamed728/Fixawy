@@ -43,7 +43,7 @@
                 android:text="Fixer"></TextView>
 
             <TextView
-                android:id="@+id/price_text_view"
+                android:id="@+id/phone_text_view"
                 style="@style/CardSubTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

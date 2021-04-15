@@ -1,32 +1,25 @@
-package com.example.fixawy.home.reserve
+package com.example.fixawy.home.change_prices
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.base.BaseViewModel
 import com.example.fixawy.model.Job
+import com.example.fixawy.model.UpdatePriceDTO
 import com.example.fixawy.network.mapper.JobMapper
-import com.example.fixawy.network.model.AddRequestDTO
 import com.example.fixawy.network.model.JobDTO
 import com.example.fixawy.network.repos.CityRepo
 import com.example.fixawy.network.repos.HomeRepo
 import io.reactivex.schedulers.Schedulers
 
-class ReserveViewModel(
-    var cityRepo: CityRepo,
-    var jobMapper: JobMapper,
-    var repo: HomeRepo
-) : BaseViewModel() {
+class ChangePricesViewModel(var jobMapper: JobMapper, var cityRepo: CityRepo, var repo: HomeRepo) :
+    BaseViewModel() {
 
-
+    var priceUpdatedLiveData = MutableLiveData<Boolean>()
     var jobsLiveData = MutableLiveData<List<Job>>()
-    var completedLiveData = MutableLiveData<Boolean>()
-
-
-
-    fun addRequest(addRequestDTO: AddRequestDTO){
-        var observable = repo.addRequest(addRequestDTO)
+    fun getJobs(id: Int) {
+        var observable = cityRepo.getSubJobs(id)
             .subscribeOn(Schedulers.io())
-            .doOnComplete {completedLiveData.postValue(true)}
+            .doOnNext { jobsLiveData.postValue(mapJobs(it)) }
             .doOnError { handleNetworkError(it) }
             .subscribe({ Log.d("myTag", "observable.subscribe") },
                 { throwable ->
@@ -36,10 +29,14 @@ class ReserveViewModel(
         mCompositeDisposable.add(observable)
     }
 
-    fun getJobs(id : Int) {
-        var observable = cityRepo.getSubJobs(id)
+    fun updatePrice(fixerId: Int, subDepartmentId: Int, price: Int) {
+        var updatePriceDTO = UpdatePriceDTO()
+        updatePriceDTO.fixerId = fixerId
+        updatePriceDTO.minPrice = price
+        updatePriceDTO.subDepartmentId = subDepartmentId
+        var observable = repo.updatePrice(updatePriceDTO)
             .subscribeOn(Schedulers.io())
-            .doOnNext { jobsLiveData.postValue(mapJobs(it)) }
+            .doOnComplete { priceUpdatedLiveData.postValue(true) }
             .doOnError { handleNetworkError(it) }
             .subscribe({ Log.d("myTag", "observable.subscribe") },
                 { throwable ->

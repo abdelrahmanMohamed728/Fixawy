@@ -8,4 +8,6 @@ class FixerLogInDTO {
     var password : String? = null
     var city: CityDTO? = null
     var department : JobDTO? = null
+    var identityNo : String? = null
+    var rate : Float ? = 0f
 }

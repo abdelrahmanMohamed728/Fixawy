@@ -3,7 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".home.requests.RequestsFragment">
+
+    <ProgressBar
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:id="@+id/requests_RV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+    </ProgressBar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/active_requests_RV"

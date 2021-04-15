@@ -16,6 +16,7 @@ import com.example.fixawy.model.Request
 import com.example.fixawy.model.User
 import com.example.fixawy.network.repos.UserRepo
 import kotlinx.android.synthetic.main.past_requests_fragment.*
+import kotlinx.android.synthetic.main.requests_fragment.*
 import org.koin.android.ext.android.get
 
 class PastRequestsFragment : BaseFragment<PastRequestsViewModel>() , OnClickItem{
@@ -29,25 +30,59 @@ class PastRequestsFragment : BaseFragment<PastRequestsViewModel>() , OnClickItem
         return inflater.inflate(R.layout.past_requests_fragment, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        pastProgressBar.visibility = View.VISIBLE
+        var repo : UserRepo = get()
+        var type = repo.type
+        if (type == User.FIXER_TYPE) {
+            var id = repo.fixerLiveData.value?.id
+            if (id!=null) {
+                viewModel.getFixerPastRequests(id)
+            }
+        }
+        else {
+            var id = repo.clientLiveData.value?.id
+            if (id != null) {
+                viewModel.getClientPastRequests(id)
+
+            }
+        }
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+        viewModel.pastFixerRequestsLiveData.observe(this , {
+            pastProgressBar.visibility = View.GONE
+            requestsAdapter.requests.addAll(it)
+            requestsAdapter.requests = requestsAdapter.requests.distinctBy { item -> item.id }.toMutableList()
+            requestsAdapter.notifyDataSetChanged()
+        })
+        viewModel.pastClientRequestsLiveData.observe(this , {
+            pastProgressBar.visibility = View.GONE
+            requestsAdapter.requests.addAll(it)
+            requestsAdapter.requests = requestsAdapter.requests.distinctBy { item -> item.id }.toMutableList()
+            requestsAdapter.notifyDataSetChanged()
+        })
+    }
+
     override fun initRecycler() {
         super.initRecycler()
-        initDummyData()
+        var repo : UserRepo = get()
+        var type = repo.type
         requestsAdapter =
             RequestsAdapter(
                 requireContext(),
-                initDummyData(),
+                mutableListOf(),
                 this,
-                RequestsAdapter.PAST_REQUESTS_MODE
+                RequestsAdapter.PAST_REQUESTS_MODE,
+                type
             )
         past_requests_RV.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         past_requests_RV.adapter = requestsAdapter
     }
 
-    private fun initDummyData(): List<Request> {
-        var list = mutableListOf<Request>()
-        return list
-    }
 
     override fun onItemClicked(position: Int) {
         var repo : UserRepo = get()

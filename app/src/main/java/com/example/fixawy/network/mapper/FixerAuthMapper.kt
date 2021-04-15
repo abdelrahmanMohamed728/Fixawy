@@ -16,6 +16,8 @@ class FixerAuthMapper : EntityMapper<Fixer,FixerDTO> {
         fixerDTO.password = entity.password
         fixerDTO.cityId = entity.city?.id
         fixerDTO.departmentId = entity.job?.id
+        fixerDTO.identityNo = entity.identityNo
+        fixerDTO.rate = entity.rating
         return fixerDTO
     }
 
@@ -24,10 +26,13 @@ class FixerAuthMapper : EntityMapper<Fixer,FixerDTO> {
         fixer.mobile = model.mobile
         fixer.email = model.email
         fixer.job = Job()
-        fixer.job!!.id = model.id
+        fixer.job!!.id = model.departmentId
         fixer.password = model.password
         fixer.city = City()
         fixer.city!!.id = model.cityId
+        fixer.rating = model.rate
+        fixer.prices = model.prices
+        fixer.identityNo = model.identityNo
         return fixer
     }
 }

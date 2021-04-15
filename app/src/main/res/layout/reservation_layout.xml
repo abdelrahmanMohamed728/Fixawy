@@ -23,7 +23,16 @@
                 style="@style/CardTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ahmed Mohamed"></TextView>
+                android:text="Ahmed Mohamed">
+            </TextView>
+
+            <TextView
+                android:id="@+id/person_number_text_view"
+                style="@style/CardTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ahmed Mohamed">
+            </TextView>
 
             <TextView
                 android:id="@+id/date_text_view"
@@ -31,7 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="On Monday"></TextView>
+                android:text="On Monday">
+            </TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -54,7 +64,8 @@
                 android:padding="10dp"
                 android:text="Pending"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold">
+            </TextView>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
